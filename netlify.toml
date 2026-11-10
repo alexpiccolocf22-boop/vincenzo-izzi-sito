@@ -1,0 +1,20 @@
+[build]
+  command = "node build.mjs"
+  publish = "."
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# I dati delle opere non restano in cache: le modifiche si vedono subito.
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "no-cache"
+[[headers]]
+  for = "/content/*"
+  [headers.values]
+    Cache-Control = "no-cache"
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"

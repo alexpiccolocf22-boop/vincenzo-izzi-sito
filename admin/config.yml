@@ -1,0 +1,140 @@
+# ─────────────────────────────────────────────────────────────
+# ACCESSO AL PANNELLO
+# Ora: login con GitHub (account alexpiccolocf22-boop).
+# Per far entrare Vincenzo con email e password, sostituisci solo
+# il blocco "backend" qui sotto con quello generato da DecapBridge
+# (vedi GUIDA.md, sezione "Accesso per Vincenzo"). Il resto non si tocca.
+# ─────────────────────────────────────────────────────────────
+backend:
+  name: github
+  repo: alexpiccolocf22-boop/vincenzo-izzi-sito
+  branch: main
+  commit_messages:
+    create: "Nuovo: {{slug}}"
+    update: "Modifica: {{slug}}"
+    delete: "Eliminato: {{slug}}"
+    uploadMedia: "Foto: {{path}}"
+    deleteMedia: "Foto eliminata: {{path}}"
+
+locale: it
+site_url: /
+display_url: /
+logo_url: /assets/logo.png
+
+editor:
+  preview: false
+
+media_folder: images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: opere
+    label: Opere e stampe
+    label_singular: opera
+    description: "Ogni opera originale o stampa del sito. Dopo il salvataggio il sito si aggiorna da solo in circa un minuto."
+    folder: content/works
+    format: json
+    extension: json
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    identifier_field: titleIt
+    summary: "{{titleIt}}  ·  {{type}}  ·  {{year}}"
+    sortable_fields: [order, titleIt, year]
+    view_filters:
+      - { label: "Solo originali", field: type, pattern: original }
+      - { label: "Solo stampe", field: type, pattern: print }
+    fields:
+      - { label: "Tipo", name: type, widget: select, default: original, options: [ { label: "Opera originale (si chiede informazioni)", value: original }, { label: "Stampa fine art (si compra online)", value: print } ] }
+      - { label: "Titolo (italiano)", name: titleIt, widget: string }
+      - { label: "Titolo (inglese)", name: titleEn, widget: string, required: false }
+      - { label: "Tecnica (italiano)", name: techIt, widget: string, required: false, hint: "Esempio: Carboncino su carta" }
+      - { label: "Tecnica (inglese)", name: techEn, widget: string, required: false, hint: "Esempio: Charcoal on paper" }
+      - { label: "Anno", name: year, widget: number, value_type: int, required: false }
+      - label: "Foto"
+        name: images
+        widget: list
+        required: false
+        max: 8
+        hint: "Fino a 8 foto. La prima è quella principale. Meglio JPG sotto i 2 MB."
+        field: { label: "Foto", name: image, widget: image, choose_url: false }
+      - label: "Misure, prezzi e copie disponibili"
+        name: variants
+        widget: list
+        min: 1
+        summary: "{{fields.size}} · {{fields.price}} € · {{fields.stock}} disponibili"
+        hint: "Quando un'opera viene venduta o una stampa pagata, abbassa qui le copie disponibili. A zero appare Venduta o Esaurita."
+        fields:
+          - { label: "Misura", name: size, widget: string, hint: "Esempio: 50 × 70 cm" }
+          - { label: "Prezzo (€)", name: price, widget: number, value_type: int, min: 1 }
+          - { label: "Copie disponibili", name: stock, widget: number, value_type: int, min: 0, default: 1 }
+      - { label: "Copie dell'edizione (solo stampe)", name: edition, widget: number, value_type: int, required: false, hint: "Esempio: 30. Compare come Limitata a 30 copie." }
+      - { label: "Data e ora del drop", name: release, widget: datetime, required: false, hint: "Lascia vuoto per metterla subito in vendita. Con una data futura compare In uscita il… e si apre da sola all'ora indicata." }
+      - { label: "Ordine di apparizione", name: order, widget: number, value_type: int, default: 50, hint: "Numero più basso = appare prima." }
+      - { label: "Nascondi dal sito", name: hidden, widget: boolean, default: false, required: false }
+
+  - name: sito
+    label: Impostazioni del sito
+    description: "Contatti, pagamento, spedizioni, foto di copertina, avviso e testi."
+    files:
+      - name: settings
+        label: Impostazioni, contatti e testi
+        file: content/settings.json
+        fields:
+          - { label: "Mostra la scritta di anteprima (Opere e prezzi sono esempi)", name: demo, widget: boolean, default: true, hint: "Togli la spunta quando opere e prezzi sono quelli veri." }
+          - { label: "Numero WhatsApp con prefisso, senza spazi", name: whatsapp, widget: string, hint: "Esempio: 393495421157" }
+          - { label: "Email", name: email, widget: string }
+          - { label: "Link Instagram", name: instagram, widget: string }
+          - { label: "Nome Instagram mostrato", name: instagramName, widget: string }
+          - { label: "Nome PayPal.me", name: paypal, widget: string, hint: "Il pagamento delle stampe apre paypal.me/NOME con l'importo già scritto. Controlla sempre su PayPal di averlo ricevuto prima di spedire." }
+          - { label: "Spedizione stampe Italia (€ per ordine)", name: shipIT, widget: number, value_type: float, min: 0 }
+          - { label: "Spedizione stampe internazionale (€ per ordine)", name: shipINT, widget: number, value_type: float, min: 0 }
+          - { label: "Foto dell'artista", name: portrait, widget: image, required: false, choose_url: false }
+          - { label: "Foto di copertina (home)", name: hero, widget: image, required: false, choose_url: false, hint: "Viene mostrata in bianco e nero a tutto schermo. Se vuota si usa la prima opera con foto." }
+          - { label: "Video di copertina (MP4, facoltativo)", name: heroVideo, widget: file, required: false, choose_url: false, hint: "Video breve e leggero, sotto i 15 MB. Se c'è, sostituisce la foto." }
+          - label: "Avviso in alto"
+            name: notice
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Mostra l'avviso", name: on, widget: boolean, default: false, required: false }
+              - { label: "Testo (italiano)", name: it, widget: string, required: false, hint: "Esempio: Nuovo drop: stampe disponibili dal 5 dicembre" }
+              - { label: "Testo (inglese)", name: en, widget: string, required: false }
+          - label: "Testi del sito"
+            name: texts
+            widget: object
+            collapsed: true
+            hint: "Se lasci un campo vuoto, il sito usa il testo di partenza."
+            fields:
+              - label: "Italiano"
+                name: it
+                widget: object
+                collapsed: true
+                fields:
+                  - { label: "Copertina, sottotitolo sotto il nome", name: heroTag, widget: string, required: false }
+                  - { label: "Biografia, primo paragrafo", name: lead, widget: text, required: false }
+                  - { label: "Biografia, secondo paragrafo", name: bio2, widget: text, required: false }
+                  - { label: "Biografia, terzo paragrafo", name: bio3, widget: text, required: false }
+                  - { label: "Dichiarazione d'artista, prima parte", name: s1, widget: text, required: false }
+                  - { label: "Dichiarazione d'artista, seconda parte", name: s2, widget: text, required: false }
+                  - { label: "Testo della sala Opere originali", name: roomO, widget: text, required: false }
+                  - { label: "Testo della sala Stampe fine art", name: roomP, widget: text, required: false }
+                  - { label: "Invito ai contatti", name: ctaTitle, widget: string, required: false }
+                  - { label: "Imballaggio", name: carePack, widget: text, required: false }
+                  - { label: "Certificato di autenticità", name: careCert, widget: text, required: false }
+              - label: "English"
+                name: en
+                widget: object
+                collapsed: true
+                fields:
+                  - { label: "Copertina, sottotitolo sotto il nome", name: heroTag, widget: string, required: false }
+                  - { label: "Biografia, primo paragrafo", name: lead, widget: text, required: false }
+                  - { label: "Biografia, secondo paragrafo", name: bio2, widget: text, required: false }
+                  - { label: "Biografia, terzo paragrafo", name: bio3, widget: text, required: false }
+                  - { label: "Dichiarazione d'artista, prima parte", name: s1, widget: text, required: false }
+                  - { label: "Dichiarazione d'artista, seconda parte", name: s2, widget: text, required: false }
+                  - { label: "Testo della sala Opere originali", name: roomO, widget: text, required: false }
+                  - { label: "Testo della sala Stampe fine art", name: roomP, widget: text, required: false }
+                  - { label: "Invito ai contatti", name: ctaTitle, widget: string, required: false }
+                  - { label: "Imballaggio", name: carePack, widget: text, required: false }
+                  - { label: "Certificato di autenticità", name: careCert, widget: text, required: false }
