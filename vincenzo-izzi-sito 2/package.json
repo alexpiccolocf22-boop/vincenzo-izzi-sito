@@ -1,0 +1,7 @@
+{
+  "name": "vincenzo-izzi-sito",
+  "private": true,
+  "dependencies": {
+    "@netlify/blobs": "11.1.5"
+  }
+}

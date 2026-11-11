@@ -1,0 +1,46 @@
+{
+  "demo": true,
+  "whatsapp": "393495421157",
+  "email": "cashonlytattoo@gmail.com",
+  "instagram": "https://www.instagram.com/vincenzoizzi_art/",
+  "instagramName": "@vincenzoizzi_art",
+  "paypal": "Vincenzoizzi",
+  "shipIT": 10,
+  "shipINT": 35,
+  "portrait": "/images/uploads/vincenzo-izzi.jpg",
+  "hero": "",
+  "heroVideo": "",
+  "notice": {
+    "en": "",
+    "it": "",
+    "on": false
+  },
+  "texts": {
+    "it": {
+      "heroTag": "Charcoal artist · Messina",
+      "lead": "Vincenzo Izzi nasce a Messina nel 1979. Si diploma presso l'Istituto d'Arte “Ernesto Basile”, dove riceve una formazione tecnica e visiva che semina in lui una sensibilità profonda per la forma e per la materia. È tuttavia solo nel 2025 che decide di fare dell'arte il proprio linguaggio, avvicinandosi al disegno da autodidatta con la determinazione di chi ha aspettato il momento giusto.",
+      "bio2": "La tecnica che sceglie, il carboncino, non è casuale. È uno strumento che non ammette menzogna: ogni segno è definitivo anche quando viene cancellato, ogni gesto porta con sé il peso di una scelta. Il carboncino diventa per Izzi il mezzo attraverso cui tradurre un dialogo interiore tra due grandi tensioni della storia dell'arte: la luce tagliente e drammatica di Caravaggio, capace di strappare la figura dal buio come un atto di nascita violento, e la libertà istintiva del segno impressionista, quella libertà che Monet e Manet hanno insegnato a sentire prima ancora che a vedere.",
+      "bio3": "Il risultato è una ricerca che non cerca la perfezione della linea, ma la verità del contrasto. Ogni volto che Izzi disegna è un campo di battaglia tra controllo e caos, tra anatomia e gesto, tra luce e oscurità dell'anima.",
+      "s1": "“Il mio lavoro nasce da un dialogo impossibile tra la luce tagliente di CARAVAGGIO e il battito istintivo dell'Impressionismo. Se dal primo ho ereditato la necessità di far emergere la figura dal buio, quasi fosse un atto di nascita violento, da maestri come Monet e Manet ho appreso la libertà del segno: un tratto che non vuole descrivere, ma sentire.",
+      "s2": "La mia è una ricerca che fonde la grammatica dell'ombra di CARAVAGGIO con l'istinto viscerale e potente degli impressionisti. Non cerco la perfezione della linea, ma la potenza del contrasto. Il mio disegno è un atto dove il carboncino si fa carne e l'ombra si fa tormento. Ogni volto è un campo di battaglia tra l'ordine del dettaglio e il caos del gesto impulsivo: un modo per liberare l'energia che la luce sprigiona quando incontra l'oscurità dell'anima.”",
+      "roomO": "Carboncino e tecniche miste. Ogni originale è un pezzo unico, accompagnato dal certificato firmato.",
+      "roomP": "Edizioni limitate e numerate, stampate su carta d'archivio in più formati.",
+      "ctaTitle": "Vuoi informazioni su un'opera originale o su una stampa?",
+      "carePack": "I pezzi unici vengono protetti con carta velina anti-acido, angolari rigidi e gusci protettivi o cassette. Le stampe vengono spedite in tubi rigidi rinforzati.",
+      "careCert": "Ogni opera originale e ogni stampa numerata viene accompagnata dal certificato ufficiale firmato a mano."
+    },
+    "en": {
+      "heroTag": "Charcoal artist · Messina",
+      "lead": "Vincenzo Izzi was born in Messina in 1979. He graduated from the “Ernesto Basile” Art Institute, where a technical and visual training planted in him a deep sensitivity to form and material. Only in 2025 did he decide to make art his own language, coming to drawing as a self-taught artist with the determination of someone who has waited for the right moment.",
+      "bio2": "His choice of charcoal is no accident. It is a tool that allows no lies: every mark is final even when erased, and every gesture carries the weight of a decision. For Izzi, charcoal becomes the means of translating an inner dialogue between two great tensions in art history: the sharp, dramatic light of Caravaggio, able to tear the figure from the dark like a violent act of birth, and the instinctive freedom of the Impressionist mark, the freedom that Monet and Manet taught us to feel before we see.",
+      "bio3": "The result is a practice that seeks the truth of contrast rather than the perfection of line. Every face Izzi draws is a battlefield between control and chaos, anatomy and gesture, light and the darkness of the soul.",
+      "s1": "“My work is born from an impossible dialogue between the cutting light of CARAVAGGIO and the instinctive pulse of Impressionism. From the former I inherited the need to bring the figure out of the dark, almost like a violent act of birth. From masters such as Monet and Manet I learned the freedom of the mark: a stroke that wants to feel rather than describe.",
+      "s2": "My research merges the grammar of CARAVAGGIO's shadow with the visceral, powerful instinct of the Impressionists. I do not seek the perfection of line, but the power of contrast. My drawing is an act in which charcoal becomes flesh and shadow becomes torment. Every face is a battlefield between the order of detail and the chaos of impulsive gesture: a way to release the energy that light gives off when it meets the darkness of the soul.”",
+      "roomO": "Charcoal and mixed media. Every original is one of a kind and comes with a signed certificate.",
+      "roomP": "Limited, numbered editions printed on archival paper in several sizes.",
+      "ctaTitle": "Would you like information about an original work or a print?",
+      "carePack": "Unique pieces are protected with acid-free tissue paper, rigid corners and protective shells or crates. Prints ship in reinforced rigid tubes.",
+      "careCert": "Every original work and every numbered print comes with an official hand-signed certificate."
+    }
+  }
+}

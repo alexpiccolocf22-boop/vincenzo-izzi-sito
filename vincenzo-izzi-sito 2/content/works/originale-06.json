@@ -1,0 +1,20 @@
+{
+  "type": "original",
+  "titleIt": "Opera di esempio 06",
+  "titleEn": "Sample work 06",
+  "techIt": "Carboncino su carta",
+  "techEn": "Charcoal on paper",
+  "year": 2026,
+  "edition": "",
+  "release": "",
+  "images": [],
+  "variants": [
+    {
+      "price": 600,
+      "size": "30 × 40 cm",
+      "stock": 1
+    }
+  ],
+  "hidden": false,
+  "order": 6
+}
