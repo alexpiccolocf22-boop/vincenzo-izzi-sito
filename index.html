@@ -193,11 +193,12 @@ h2 { font: 500 clamp(2rem, 4.6vw, 3.8rem)/1.04 var(--display); letter-spacing: -
 .bio { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 80px); align-items: start; }
 .bio .portrait { position: sticky; top: calc(var(--hh) + 24px); }
 .bio-text { display: grid; gap: 22px; min-width: 0; }
+.bio .portrait img, .intro > .frame img { filter: grayscale(1) contrast(1.05); }
 .bio-text .lead { font: 400 clamp(1.35rem, 2vw, 1.75rem)/1.36 var(--display); }
 .bio-text p:not(.lead) { max-width: 64ch; color: var(--bone); }
 .statement { display: grid; gap: 24px; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); }
 .statement .label { color: var(--smoke); }
-.statement blockquote { margin: 0; display: grid; gap: 26px; font: 400 clamp(1.35rem, 2.4vw, 2.1rem)/1.34 var(--display); text-wrap: pretty; }
+.statement blockquote { margin: 0; display: grid; gap: 22px; max-width: 62ch; font: 400 clamp(1.1rem, 1.5vw, 1.3rem)/1.7 var(--ui); color: var(--bone); text-wrap: pretty; }
 .cv { display: grid; gap: 32px clamp(24px, 4vw, 64px); grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line-strong); padding-top: 28px; }
 .cv > div { display: grid; gap: 10px; align-content: start; min-width: 0; }
 .cv .label { color: var(--smoke); }
