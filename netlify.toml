@@ -3,9 +3,18 @@
   publish = "."
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "22"
 
-# I dati delle opere non restano in cache: le modifiche si vedono subito.
+[functions]
+  directory = "netlify/functions"
+
+# La vecchia pagina /admin porta alla nuova gestione.
+[[redirects]]
+  from = "/admin/*"
+  to = "/gestione/"
+  status = 302
+  force = true
+
 [[headers]]
   for = "/data/*"
   [headers.values]
@@ -15,6 +24,7 @@
   [headers.values]
     Cache-Control = "no-cache"
 [[headers]]
-  for = "/admin/*"
+  for = "/gestione/*"
   [headers.values]
     X-Robots-Tag = "noindex"
+    Cache-Control = "no-cache"

@@ -983,7 +983,7 @@ function renderChrome(route) {
       <div><p class="label">${t("site")}</p><ul><li><a href="#originali">${t("doorO")}</a></li><li><a href="#stampe">${t("doorP")}</a></li><li><a href="#artista">${t("bio")}</a></li><li><a href="#contatti">${t("contacts")}</a></li><li><a href="#spedizioni">${t("shipTitle")}</a></li></ul></div>
       <div><p class="label">${t("legal")}</p><p class="note">${t("legalMissing")}</p></div>
     </div>
-    <div class="legal"><div class="wrap"><span>© ${new Date().getFullYear()} Vincenzo Izzi. ${lang === "it" ? "Tutti i diritti sulle immagini delle opere sono riservati." : "All rights to the artwork images are reserved."}</span><a class="footer-admin" href="/admin/">${t("manage")}</a></div></div>`;
+    <div class="legal"><div class="wrap"><span>© ${new Date().getFullYear()} Vincenzo Izzi. ${lang === "it" ? "Tutti i diritti sulle immagini delle opere sono riservati." : "All rights to the artwork images are reserved."}</span><a class="footer-admin" href="/gestione/">${t("manage")}</a></div></div>`;
   setHeader();
 }
 function setHeader() {
@@ -1098,9 +1098,11 @@ async function boot() {
   render(true);
   const timer = setTimeout(() => { if (dbState === "loading") { dbState = "slow"; refresh(); } }, 10000);
   try {
+    /* Prima i dati salvati dalla pagina /gestione, poi i file di partenza. */
+    const live = await fetch("/api/data", { cache:"no-store" }).then(r => r.ok ? r.json() : {}).catch(() => ({}));
     const [works, settings] = await Promise.all([
-      fetch("/data/works.json", { cache:"no-cache" }).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
-      fetch("/content/settings.json", { cache:"no-cache" }).then(r => r.ok ? r.json() : {}).catch(() => ({}))
+      Array.isArray(live.works) ? live.works : fetch("/data/works.json", { cache:"no-cache" }).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+      live.settings || fetch("/content/settings.json", { cache:"no-cache" }).then(r => r.ok ? r.json() : {}).catch(() => ({}))
     ]);
     S = { ...DEFAULTS, ...settings, notice:{ ...DEFAULTS.notice, ...(settings.notice || {}) }, texts:settings.texts || {} };
     S.shipIT = num(S.shipIT, DEFAULTS.shipIT); S.shipINT = num(S.shipINT, DEFAULTS.shipINT);
